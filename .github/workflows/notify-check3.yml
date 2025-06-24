@@ -11,7 +11,7 @@ jobs:
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          repository: your-username/check3
+          repository: siddharthanelango/check3
           event-type: check1-updated
           client-payload: |
             {
