@@ -1,0 +1,21 @@
+name: Notify Check3 on Commit
+on:
+  push:
+    branches: [ main ]  # or your default branch
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          repository: your-username/check3
+          event-type: check1-updated
+          client-payload: |
+            {
+              "commit_id": "${{ github.sha }}",
+              "commit_message": "${{ github.event.head_commit.message }}",
+              "repository": "check1"
+            }
